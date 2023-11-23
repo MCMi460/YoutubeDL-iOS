@@ -150,7 +150,7 @@ public let defaultOptions: PythonObject = [
     "format": "bestaudio[ext=m4a]/best",
     "nocheckcertificate": true,
     "verbose": true,
-    "outtmpl": PythonObject(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].path + "/%(id)s.%(ext)s"),
+    "outtmpl": PythonObject(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].path + "/sources/%(id)s.%(ext)s"),
     "writethumbnail": true,
 ]
 
