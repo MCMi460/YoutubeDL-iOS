@@ -147,9 +147,11 @@ public extension Format {
 }
 
 public let defaultOptions: PythonObject = [
-    "format": "bestvideo,bestaudio[ext=m4a]/best",
+    "format": "bestaudio[ext=m4a]/best",
     "nocheckcertificate": true,
     "verbose": true,
+    "outtmpl": PythonObject(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].path + "/%(id)s.%(ext)s"),
+    "writethumbnail": true,
 ]
 
 public enum YoutubeDLError: Error {
@@ -583,7 +585,7 @@ open class YoutubeDL: NSObject {
         }
 
         print(#function, url)
-        let info = try pythonObject.extract_info.throwing.dynamicallyCall(withKeywordArguments: ["": url.absoluteString, "download": false, "process": true])
+        let info = try pythonObject.extract_info.throwing.dynamicallyCall(withKeywordArguments: ["": url.absoluteString, "download": true, "process": true])
         print(info)
 //        print(#function, "throttled:", pythonObject.throttled)
         

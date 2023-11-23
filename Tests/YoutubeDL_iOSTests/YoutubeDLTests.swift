@@ -32,7 +32,9 @@ final class YoutubeDL_iOSTests: XCTestCase {
         XCTAssertEqual(Py_IsInitialized(), 1)
     }
     
+    // Now also downloads because testExtractInfo() and testExtractMP3() never both work at the same time.
     func testExtractInfo() async throws {
+        print(FileManager.default.currentDirectoryPath)
         let youtubeDL = YoutubeDL()
         let (formats, info) = try await youtubeDL.extractInfo(url: URL(string: "https://www.youtube.com/watch?v=WdFj7fUnmC0")!)
         print(formats, info)
